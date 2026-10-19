@@ -1,0 +1,461 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>TIDEWORK — modular instruments, hand-built in Lisbon</title>
+  <meta name="description" content="TIDEWORK is a three-person atelier in Marvila, Lisbon, building analogue modular instruments by hand: MARÉ, ONDA and SAL. Built to order, tuned for 72 hours, signed by the builder." />
+  <meta name="theme-color" content="#07100e" />
+  <meta property="og:title" content="TIDEWORK — modular instruments, hand-built in Lisbon" />
+  <meta property="og:description" content="Three analogue instruments, built one at a time in a former boat-repair shed on the Lisbon waterfront." />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%2307100e'/%3E%3Cpath d='M4 21 C 8 13, 12 29, 16 21 S 24 13, 28 21' fill='none' stroke='%23c9f455' stroke-width='2'/%3E%3C/svg%3E" />
+  <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+  <a class="skip" href="#studio">Skip to content</a>
+  <div class="preloader" aria-hidden="true">
+    <span class="preloader__word display">TIDEWORK</span>
+    <span class="preloader__num mono">000</span>
+  </div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="progress" aria-hidden="true"><i id="progressBar"></i></div>
+
+  <header class="nav" id="nav">
+    <a href="#top" class="nav__logo" aria-label="TIDEWORK, back to top">
+      <span class="nav__mark" aria-hidden="true">TW</span>
+      <span class="nav__word">TIDEWORK</span>
+    </a>
+    <nav class="nav__links" aria-label="Sections">
+      <a href="#instruments">Instruments</a>
+      <a href="#workshop">Workshop</a>
+      <a href="#sound">Sound</a>
+      <a href="#order">Order</a>
+    </nav>
+    <div class="nav__meta">
+      <span class="nav__clock mono" id="lisbonClock">LISBOA 00:00</span>
+      <a class="nav__cta mono" href="#order">Build slot <span aria-hidden="true">↗</span></a>
+      <button class="nav__menu mono" id="menuBtn" aria-expanded="false" aria-controls="menu">Menu</button>
+    </div>
+  </header>
+
+  <div class="menu" id="menu" aria-hidden="true">
+    <nav class="menu__nav" aria-label="Mobile">
+      <a href="#instruments"><span class="mono">01</span> Instruments</a>
+      <a href="#workshop"><span class="mono">02</span> Workshop</a>
+      <a href="#sound"><span class="mono">03</span> Sound</a>
+      <a href="#order"><span class="mono">04</span> Order</a>
+    </nav>
+    <p class="menu__foot mono">Rua do Açúcar 74, Marvila · Lisboa<br />studio@tidework.pt</p>
+  </div>
+
+  <main id="top">
+    <!-- 01 ─────────────────────────────────────────────────────────── hero -->
+    <section class="hero" data-tone="dark">
+      <canvas class="tide" id="tide" aria-hidden="true"></canvas>
+
+      <div class="hero__frame wrap">
+        <div class="hero__top">
+          <p class="label" data-intro><i class="dot" aria-hidden="true"></i> Modular instruments</p>
+          <p class="label hero__coord" data-intro>Marvila, Lisboa · 38°44′N 9°06′W</p>
+        </div>
+
+        <div class="hero__mid">
+          <p class="hero__lede" data-intro>Three analogue instruments, built one at a time in a former boat shed on the Lisbon waterfront.</p>
+          <div class="readout" data-intro aria-hidden="true">
+            <span class="readout__dot"></span>
+            <div class="readout__rows">
+              <span class="readout__row"><i>Freq</i><span><b id="rdFreq">0.18</b> Hz</span></span>
+              <span class="readout__row"><i>Swing</i><span><b id="rdAmp">3.10</b> V</span></span>
+              <span class="readout__row"><i>State</i><span><b id="rdState">Drift</b></span></span>
+            </div>
+          </div>
+        </div>
+
+        <h1 class="wordmark" data-fit="hero" aria-label="TIDEWORK">
+          <span class="wordmark__ln" aria-hidden="true">TIDE</span><span class="wordmark__ln" aria-hidden="true">WORK</span>
+        </h1>
+
+        <div class="hero__foot">
+          <a class="scrollcue mono" href="#instruments">
+            <span>The instruments</span><i aria-hidden="true"></i>
+          </a>
+          <p class="label hero__hint">Drag to bend the signal</p>
+          <button class="tidebtn mono" id="tidePause" aria-pressed="false"><span class="tidebtn__bar" aria-hidden="true"></span> Pause tide</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ticker: a thin strip of bench facts -->
+    <div class="ticker" data-marquee data-speed="30">
+      <div class="marquee__track">
+        <div class="marquee__item">
+          <span>Hand-soldered</span><i></i><span>Bone-anodised panels</span><i></i><span>72-hour burn-in</span><i></i>
+          <span>Signed by the builder</span><i></i><span>Six-year warranty</span><i></i><span>Marvila, Lisboa</span><i></i>
+        </div>
+      </div>
+      <button class="ticker__toggle mono" data-marquee-toggle aria-pressed="false">Pause</button>
+    </div>
+
+    <!-- 02 ───────────────────────────────────────────────────────── studio -->
+    <section class="section section--bone studio" id="studio" data-tone="light">
+      <div class="wrap">
+        <div class="shead">
+          <span class="label">(02) The studio</span>
+          <div class="shead__body">
+            <h2 class="display h-1">One bench,<br />three builders</h2>
+          </div>
+          <p class="shead__aside">TIDEWORK began in 2016 with a borrowed drill press and one oscillator design that would not stay in tune.</p>
+        </div>
+
+        <div class="statement">
+          <p class="label statement__label">Est. 2016<br />Marvila, Lisboa</p>
+          <p class="statement__text" data-scrub-words>We build instruments the slow way. Every panel is etched in the shed, every board soldered by hand, every oscillator tuned at 23 °C and then left running for 72 hours. The person who soldered yours answers your email.</p>
+        </div>
+
+        <div class="numbers" data-reveal-group>
+          <div class="numbers__item" data-reveal>
+            <span class="numbers__n display"><span data-counter="2016">0</span></span>
+            <span class="label">The year we started</span>
+          </div>
+          <div class="numbers__item" data-reveal>
+            <span class="numbers__n display"><span data-counter="61">0</span></span>
+            <span class="label">Instruments a year</span>
+          </div>
+          <div class="numbers__item" data-reveal>
+            <span class="numbers__n display"><span data-counter="72">0</span><span class="numbers__unit mono">h</span></span>
+            <span class="label">Burn-in, every unit</span>
+          </div>
+          <div class="numbers__item" data-reveal>
+            <span class="numbers__n display"><span data-counter="6">0</span><span class="numbers__unit mono">yr</span></span>
+            <span class="label">Warranty, parts &amp; labour</span>
+          </div>
+        </div>
+
+        <div class="studio__cols">
+          <div class="studio__col">
+            <p>Marvila is a working neighbourhood, not a postcard. Our shed sits between a boatyard and a coffee roaster, with a roll door that opens onto the river when the weather allows.</p>
+          </div>
+          <div class="studio__col">
+            <p>There is no stock. Instruments are built to order in batches of six, because six is how many we can keep open on the bench without rushing the tuning.</p>
+          </div>
+          <div class="studio__col">
+            <p class="label">Visits by appointment<br />Thursday and Friday<br />10:00 – 17:00</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 03 ───────────────────────────────────────────────────── instruments -->
+    <section class="section section--dark instruments" id="instruments" data-tone="dark">
+      <div class="wrap">
+        <div class="shead">
+          <span class="label">(03) The instruments</span>
+          <div class="shead__body">
+            <h2 class="display h-1">Three,<br />in production</h2>
+          </div>
+          <p class="shead__aside">Built to order. Nothing sits on a shelf; every instrument is measured, burned in and tuned before it is packed.</p>
+        </div>
+
+        <article class="inst inst--lead" data-inst="mare">
+          <div class="plate-wrap">
+            <figure class="plate" data-clip>
+              <div class="plate__art" data-panel="mare" role="img" aria-label="Engineering plate of MARÉ: a 6U, 104 HP bone-aluminium modular system with two oscillators, a filter, four function generators, a sequencer and a mixer, with three patch cables drawn across the panel."></div>
+            </figure>
+            <figcaption class="plate__cap mono"><span>PLATE 01 — MARÉ, 6U / 104 HP</span><span>FACE PLATE: BONE-ANODISED 2 MM</span></figcaption>
+          </div>
+          <div class="inst__meta">
+            <div class="inst__name">
+              <p class="label">01 — System</p>
+              <h3 class="display">Maré</h3>
+            </div>
+            <div class="inst__copy">
+              <p>Two oscillators, a four-pole filter, four function generators, an eight-step sequencer and a mixer in one walnut-ended case. Everything is patched at the panel — no menus, no screens, no firmware.</p>
+            </div>
+            <dl class="specs">
+              <div><dt>Format</dt><dd>6U · 104 HP</dd></div>
+              <div><dt>Power</dt><dd>+12 V 1.4 A</dd></div>
+              <div><dt>Weight</dt><dd>4.1 kg</dd></div>
+              <div><dt>Lead time</dt><dd>22 weeks</dd></div>
+              <div><dt>From</dt><dd>€4 950</dd></div>
+            </dl>
+          </div>
+          <div class="inst__foot">
+            <a class="link-arrow mono" href="#order" data-cursor="Order"><span>Enquire about MARÉ</span><i aria-hidden="true">↗</i></a>
+          </div>
+        </article>
+
+        <div class="inst-pair">
+          <article class="inst inst--small" data-inst="onda">
+            <div class="plate-wrap">
+              <figure class="plate" data-clip>
+                <div class="plate__art" data-panel="onda" role="img" aria-label="Engineering plate of ONDA: a 3U, 42 HP dual triangle-core oscillator with a diode wavefolder, two large tuning knobs and fourteen patch points."></div>
+              </figure>
+              <figcaption class="plate__cap mono"><span>PLATE 02 — ONDA, 3U / 42 HP</span><span>DUAL OSCILLATOR</span></figcaption>
+            </div>
+            <div class="inst__meta">
+              <div class="inst__name">
+                <p class="label">02 — Oscillator</p>
+                <h3 class="display">Onda</h3>
+              </div>
+              <p class="inst__copy">Dual triangle-core oscillator with a diode wavefolder and hard sync. Tracks 1 V/Oct across six octaves without a fan or a heatsink.</p>
+              <dl class="specs">
+                <div><dt>Format</dt><dd>3U · 42 HP</dd></div>
+                <div><dt>Weight</dt><dd>0.6 kg</dd></div>
+                <div><dt>From</dt><dd>€1 150</dd></div>
+              </dl>
+            </div>
+            <div class="inst__foot">
+              <a class="link-arrow mono" href="#order" data-cursor="Order"><span>Enquire about ONDA</span><i aria-hidden="true">↗</i></a>
+            </div>
+          </article>
+
+          <article class="inst inst--small" data-inst="sal">
+            <div class="plate-wrap">
+              <figure class="plate" data-clip>
+                <div class="plate__art" data-panel="sal" role="img" aria-label="Engineering plate of SAL: a narrow 3U, 20 HP noise and grain texture module with five knobs and eight patch points."></div>
+              </figure>
+              <figcaption class="plate__cap mono"><span>PLATE 03 — SAL, 3U / 20 HP</span><span>NOISE &amp; GRAIN</span></figcaption>
+            </div>
+            <div class="inst__meta">
+              <div class="inst__name">
+                <p class="label">03 — Texture</p>
+                <h3 class="display">Sal</h3>
+              </div>
+              <p class="inst__copy">A noise and grain source for the quiet parts: white, pink and a dust setting that samples the room. Its slow random output is the reason half our demos sound like weather.</p>
+              <dl class="specs">
+                <div><dt>Format</dt><dd>3U · 20 HP</dd></div>
+                <div><dt>Weight</dt><dd>0.3 kg</dd></div>
+                <div><dt>From</dt><dd>€590</dd></div>
+              </dl>
+            </div>
+            <div class="inst__foot">
+              <a class="link-arrow mono" href="#order" data-cursor="Order"><span>Enquire about SAL</span><i aria-hidden="true">↗</i></a>
+            </div>
+          </article>
+        </div>
+
+        <p class="inst__note label">Every instrument ships with a printed calibration sheet, a patch book of twelve starting points, and four cables wound on the bench.</p>
+      </div>
+    </section>
+
+    <!-- 04 ──────────────────────────────────────────────────────── workshop -->
+    <section class="section section--bone workshop" id="workshop" data-tone="light">
+      <div class="wrap">
+        <div class="shead">
+          <span class="label">(04) The workshop</span>
+          <div class="shead__body">
+            <h2 class="display h-1">Slow is a<br />specification</h2>
+          </div>
+          <p class="shead__aside">One builder per instrument, start to finish. No subcontractors, no batch soldering, no instrument left open overnight.</p>
+        </div>
+
+        <div class="shop">
+          <div class="shop__sticky">
+            <p class="shop__lede">An instrument takes eleven days of work. We spread them over five months so that nothing is done at the wrong temperature or in a hurry.</p>
+            <ul class="rules">
+              <li><span class="mono">01</span> No more than six instruments open at once.</li>
+              <li><span class="mono">02</span> Panels etched in-house, in the darkroom at the back.</li>
+              <li><span class="mono">03</span> Every unit runs 72 hours before it ships.</li>
+            </ul>
+            <p class="shop__sig mono">— Nuno, Inês &amp; Rafa<br />the bench</p>
+          </div>
+
+          <ol class="steps" id="steps">
+            <span class="steps__line" aria-hidden="true"><i id="stepsFill"></i></span>
+            <li class="step">
+              <span class="step__jack" aria-hidden="true"></span>
+              <div class="step__body">
+                <span class="label">01 — Panel</span>
+                <h3 class="display h-3">Shear, etch, anneal</h3>
+                <p>Panels are sheared from 2 mm bone-anodised aluminium, etched in the darkroom and annealed flat. The legends are etched, not printed, so they will not rub off in ten years of patching.</p>
+              </div>
+              <span class="step__meta mono">2 mm<br />AL 5052</span>
+            </li>
+            <li class="step">
+              <span class="step__jack" aria-hidden="true"></span>
+              <div class="step__body">
+                <span class="label">02 — Board</span>
+                <h3 class="display h-3">Stuff &amp; solder</h3>
+                <p>Through-hole, by hand, one builder per instrument. Each board is washed, inspected under the loupe and photographed before it goes into the case.</p>
+              </div>
+              <span class="step__meta mono">Through-hole<br />by hand</span>
+            </li>
+            <li class="step">
+              <span class="step__jack" aria-hidden="true"></span>
+              <div class="step__body">
+                <span class="label">03 — Tune</span>
+                <h3 class="display h-3">Trim to pitch</h3>
+                <p>Oscillators are trimmed to 1 V/Oct over six octaves at 23 °C. Filter tracking and envelope times are measured and written down by hand on your calibration sheet.</p>
+              </div>
+              <span class="step__meta mono">1 V/Oct<br />@ 23 °C</span>
+            </li>
+            <li class="step">
+              <span class="step__jack" aria-hidden="true"></span>
+              <div class="step__body">
+                <span class="label">04 — Burn in</span>
+                <h3 class="display h-3">72 hours, running</h3>
+                <p>Every instrument runs a recorded patch for three days with the lid on, in a room that gets warm in the afternoon. If something is going to drift, it drifts here — not in your case.</p>
+              </div>
+              <span class="step__meta mono">72 h<br />continuous</span>
+            </li>
+            <li class="step">
+              <span class="step__jack" aria-hidden="true"></span>
+              <div class="step__body">
+                <span class="label">05 — Sign</span>
+                <h3 class="display h-3">Number, sign, pack</h3>
+                <p>The serial is engraved, the builder signs the inside of the lid, and the case is packed with the calibration sheet, a patch book and four cables wound on the bench.</p>
+              </div>
+              <span class="step__meta mono">Serial<br />signed</span>
+            </li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- 05 ─────────────────────────────────────────────────────── sound -->
+    <section class="section section--dark sound" id="sound" data-tone="dark">
+      <div class="wrap">
+        <div class="shead">
+          <span class="label">(05) On the bench</span>
+          <div class="shead__body">
+            <h2 class="display h-1">What it<br />sounds like</h2>
+          </div>
+          <p class="shead__aside">Press play to hear a patch synthesised live in this browser. No recording, no sample pack — the same topology as ONDA, running in a Web Audio graph.</p>
+        </div>
+
+        <div class="audition" id="audition">
+          <button class="audition__btn" id="playPatch" aria-pressed="false" aria-label="Play the patch">
+            <span class="audition__disc" aria-hidden="true"><span class="audition__glyph"></span></span>
+            <span class="audition__txt mono">Play the patch</span>
+          </button>
+          <div class="audition__scope-wrap">
+            <canvas class="audition__scope" id="scope" aria-hidden="true"></canvas>
+            <div class="audition__grid" aria-hidden="true"></div>
+          </div>
+          <div class="audition__meta">
+            <div><span class="label">Patch</span><span class="mono">03 — Slow tide</span></div>
+            <div><span class="label">Voices</span><span class="mono">2 × ONDA · SAL dust</span></div>
+            <div><span class="label">Tempo</span><span class="mono">52 BPM · generative</span></div>
+            <div><span class="label">Level</span><span class="mono" id="audioLevel">−∞ dB</span></div>
+          </div>
+          <p class="audition__note label">Audio starts only when you press play. Headphones recommended.</p>
+        </div>
+
+        <div class="press">
+          <div class="press__head">
+            <span class="label">In print &amp; on air</span>
+            <p class="press__logos mono">SINAL · O ATLAS · RÁDIO MARÉ · CINTA</p>
+          </div>
+
+          <figure class="quote quote--lead">
+            <blockquote class="display h-2">“It sounds like a room with the window open.”</blockquote>
+            <figcaption class="mono">Inês Palma — sound designer, Cais Theatre, Lisboa</figcaption>
+          </figure>
+
+          <div class="press__grid">
+            <figure class="quote">
+              <blockquote>“The first modular system that made me play instead of patch. I wrote an album in a fortnight and blamed the instrument.”</blockquote>
+              <figcaption class="mono">Tomás Ferreira — composer, <em>Serra</em></figcaption>
+            </figure>
+            <figure class="quote">
+              <blockquote>“Panels you photograph before you rack them. The tuning sheet in the case is the tell: somebody actually sat with it.”</blockquote>
+              <figcaption class="mono">Sinal magazine — issue 14, “Small rooms”</figcaption>
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06 ───────────────────────────────────────────────────────── order -->
+    <section class="section section--bone order" id="order" data-tone="light">
+      <div class="wrap">
+        <div class="shead">
+          <span class="label">(06) Order</span>
+          <div class="shead__body">
+            <h2 class="display h-1">Commission<br />a build</h2>
+          </div>
+          <p class="shead__aside">Six slots a quarter. Spring 2027 is open; autumn 2027 opens when these are gone.</p>
+        </div>
+
+        <div class="order__grid">
+          <div class="order__copy">
+            <p class="order__lede">Tell us what you are making. We will reply within two working days with a build date, a deposit link and the name of the person who will build it.</p>
+            <dl class="terms">
+              <div><dt class="label">Lead time</dt><dd>22 weeks from deposit</dd></div>
+              <div><dt class="label">Deposit</dt><dd>30%, refundable for 7 days</dd></div>
+              <div><dt class="label">Shipping</dt><dd>EU, UK, US — insured, tracked</dd></div>
+              <div><dt class="label">Warranty</dt><dd>6 years, parts and labour</dd></div>
+            </dl>
+            <div class="order__direct">
+              <span class="label">Or write directly</span>
+              <a class="order__mail mono" href="mailto:studio@tidework.pt">studio@tidework.pt</a>
+              <p class="mono order__addr">Rua do Açúcar 74<br />1950-206 Marvila, Lisboa<br />Visits Thu–Fri, by appointment</p>
+            </div>
+          </div>
+
+          <form class="form" id="orderForm" novalidate>
+            <div class="field">
+              <label for="f-name" class="label">Your name</label>
+              <input id="f-name" name="name" type="text" autocomplete="name" required placeholder="Ana Ribeiro" />
+            </div>
+            <div class="field">
+              <label for="f-email" class="label">Email</label>
+              <input id="f-email" name="email" type="email" autocomplete="email" required placeholder="you@studio.pt" />
+            </div>
+            <div class="field">
+              <label for="f-inst" class="label">Instrument</label>
+              <div class="select-wrap">
+                <select id="f-inst" name="instrument">
+                  <option>MARÉ — 6U system</option>
+                  <option>ONDA — dual oscillator</option>
+                  <option>SAL — noise &amp; grain</option>
+                  <option>Something else / not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="field">
+              <label for="f-note" class="label">What are you making?</label>
+              <textarea id="f-note" name="note" rows="3" placeholder="A live set for a room with a low ceiling…"></textarea>
+            </div>
+            <button class="btn" type="submit" data-magnetic><span>Request a slot</span><i aria-hidden="true">↗</i></button>
+            <p class="form__note label">This opens your mail app with the details filled in. Nothing is sent from this page.</p>
+            <p class="form__status mono" id="formStatus" role="status"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer" data-tone="dark">
+    <div class="wrap">
+      <div class="footer__cols">
+        <div class="footer__col">
+          <span class="label">Studio</span>
+          <p class="mono">Rua do Açúcar 74<br />1950-206 Marvila<br />Lisboa, Portugal</p>
+        </div>
+        <div class="footer__col">
+          <span class="label">Instruments</span>
+          <p><a href="#instruments">MARÉ — 6U system</a><br /><a href="#instruments">ONDA — dual oscillator</a><br /><a href="#instruments">SAL — noise &amp; grain</a></p>
+        </div>
+        <div class="footer__col">
+          <span class="label">Contact</span>
+          <p><a href="mailto:studio@tidework.pt">studio@tidework.pt</a><br /><a href="#order">Commission a build</a><br /><a href="#workshop">Visit the bench</a></p>
+        </div>
+        <div class="footer__col footer__col--meta">
+          <span class="label">Local time</span>
+          <p class="mono" id="footerClock">Lisboa 00:00</p>
+          <a class="footer__top mono" href="#top">Back to top ↑</a>
+        </div>
+      </div>
+
+      <p class="wordmark wordmark--footer" data-fit="footer" aria-hidden="true"><span class="wordmark__ln">TIDE</span><span class="wordmark__ln">WORK</span></p>
+
+      <div class="footer__bottom">
+        <span class="label">© 2026 TIDEWORK — all instruments numbered</span>
+        <span class="label">A design study. TIDEWORK is not a real company.</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

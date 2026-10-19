@@ -1,0 +1,111 @@
+@import "@fontsource-variable/archivo/wdth.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource/geist-mono/400.css";
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; text-size-adjust: 100%; scroll-behavior: auto; scroll-padding-top: calc(var(--nav-h) + 20px); }
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
+
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--bone);
+  font-family: var(--font-text);
+  font-size: var(--step-0);
+  line-height: var(--leading-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+img, video, svg, canvas { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { font: inherit; color: inherit; background: none; border: 0; cursor: pointer; }
+input, select, textarea { font: inherit; color: inherit; }
+::selection { background: var(--accent); color: var(--accent-ink); }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+/* --- type primitives ------------------------------------------------------ */
+.display {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-stretch: 118%;
+  line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-display);
+  text-transform: uppercase;
+  margin: 0;
+}
+.mono { font-family: var(--font-mono); }
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--step--1);
+  line-height: 1.3;
+  text-transform: uppercase;
+  letter-spacing: var(--tracking-label);
+  color: var(--mist);
+}
+.on-bone .label, .section--bone .label { color: var(--ink-3); }
+.h-1 { font-size: var(--step-4); }
+.h-2 { font-size: var(--step-3); }
+.h-3 { font-size: var(--step-2); line-height: 1.02; }
+.lede { font-size: var(--step-1); line-height: 1.45; color: var(--mist); max-width: 42ch; }
+.section--bone .lede { color: var(--ink-2); }
+p { margin: 0 0 1em; max-width: 62ch; }
+p:last-child { margin-bottom: 0; }
+
+/* --- layout primitives ---------------------------------------------------- */
+.wrap { width: 100%; max-width: var(--max); margin-inline: auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--space-2xl); position: relative; }
+.section--dark { background: var(--ground); color: var(--bone); }
+.section--bone { background: var(--bone); color: var(--ink); }
+.grid-12 { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: var(--gutter); }
+.rule { border: 0; border-top: 1px solid var(--line); margin: 0; }
+.rule--dark { border-top-color: var(--line-dark); }
+
+/* section head: mono index on the left, title and aside to the right */
+.shead {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 7fr) minmax(0, 3fr);
+  gap: var(--gutter);
+  align-items: start;
+  padding-top: var(--space-s);
+  border-top: 1px solid var(--line);
+  margin-bottom: var(--space-xl);
+}
+.section--dark .shead { border-top-color: var(--line-dark); }
+.shead__body { display: grid; gap: var(--space-m); }
+.shead__aside { font-size: var(--step--1); color: var(--ink-2); line-height: 1.6; max-width: 34ch; }
+.section--dark .shead__aside { color: var(--mist); }
+@media (max-width: 860px) {
+  .shead { grid-template-columns: 1fr; gap: var(--space-s); }
+  .shead__aside { margin-top: var(--space-xs); }
+}
+
+/* --- grain: fixed micro-texture, removes the flat vector look -------------- */
+.grain {
+  position: fixed; inset: -50%; z-index: 100; pointer-events: none; opacity: 0.055;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  animation: grain 1.4s steps(7) infinite;
+  mix-blend-mode: overlay;
+}
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-3%, 2%); }
+  40% { transform: translate(2%, -4%); }
+  60% { transform: translate(-4%, -1%); }
+  80% { transform: translate(3%, 3%); }
+}
+
+/* --- split-text masks (used by motion/reveal.js) -------------------------- */
+.split-mask { overflow: clip; display: block; padding-bottom: 0.1em; margin-bottom: -0.1em; }
+.split-line { display: block; }
+
+/* Hide reveal targets only when JS + motion are on, to avoid flash. */
+html.js:not(.reduced) [data-reveal],
+html.js:not(.reduced) [data-split] { visibility: hidden; }
+
+@media (prefers-reduced-motion: reduce) {
+  .grain { animation: none; }
+  html { scroll-behavior: auto; }
+}
