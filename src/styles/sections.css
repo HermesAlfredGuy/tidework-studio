@@ -26,7 +26,6 @@
   font-stretch: 125%;
 }
 .preloader__num { font-size: 12px; letter-spacing: 0.1em; color: var(--mist-2); }
-html.reduced .preloader { display: none; }
 
 /* --- progress hairline ---------------------------------------------------- */
 .progress { position: fixed; inset: 0 0 auto 0; height: 2px; z-index: 60; background: transparent; pointer-events: none; }
@@ -225,7 +224,6 @@ html.reduced .preloader { display: none; }
   font-size: 9px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--mist-2);
 }
 .ticker__toggle:hover { color: var(--bone); }
-html.reduced .ticker__toggle { display: none; }
 
 /* --- studio --------------------------------------------------------------- */
 .studio { padding-bottom: calc(var(--space-2xl) * 0.8); }
@@ -578,9 +576,4 @@ html.reduced .ticker__toggle { display: none; }
 .cursor__label { color: var(--accent-ink); font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0; transition: opacity var(--dur-fast); }
 .cursor.is-label .cursor__label { opacity: 1; }
 
-/* --- reduced motion (viewer opt-in only) ---------------------------------- */
-html.reduced .readout__dot,
-html.reduced .scrollcue i::after { animation: none; }
-html.reduced .scrollcue i::after { transform: translateX(0); opacity: 0.6; }
-html.reduced .plate__art svg { transition: none; }
-html.reduced .cursor { display: none; }
+/* Motion is always full (see motion/core.js): nothing here reacts to the OS setting. */
