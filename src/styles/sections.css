@@ -578,10 +578,9 @@ html.reduced .ticker__toggle { display: none; }
 .cursor__label { color: var(--accent-ink); font-family: var(--font-mono); font-size: 9px; text-transform: uppercase; letter-spacing: 0.12em; opacity: 0; transition: opacity var(--dur-fast); }
 .cursor.is-label .cursor__label { opacity: 1; }
 
-/* --- reduced motion ------------------------------------------------------- */
-@media (prefers-reduced-motion: reduce) {
-  .readout__dot, .scrollcue i::after { animation: none; }
-  .scrollcue i::after { transform: translateX(0); opacity: 0.6; }
-  .plate__art svg { transition: none; }
-  .cursor { display: none; }
-}
+/* --- reduced motion (viewer opt-in only) ---------------------------------- */
+html.reduced .readout__dot,
+html.reduced .scrollcue i::after { animation: none; }
+html.reduced .scrollcue i::after { transform: translateX(0); opacity: 0.6; }
+html.reduced .plate__art svg { transition: none; }
+html.reduced .cursor { display: none; }
